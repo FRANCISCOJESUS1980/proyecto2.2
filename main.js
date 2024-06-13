@@ -1,4 +1,4 @@
-import './src/styles/global/main.scss'
+import './src/styles/main.scss'
 
 const productos = [
   {
@@ -91,3 +91,118 @@ const productos = [
       'https://static.carrefour.es/hd_510x_/crs/cdn_static/catalog/hd/164390_00_1.jpg'
   }
 ]
+document.addEventListener('DOMContentLoaded', () => {
+  const modalContainer = document.getElementById('modalContainer')
+  const arrowContainer = document.getElementById('arrowContainer')
+  let isModalOpen = false
+
+  arrowContainer.addEventListener('click', () => {
+    if (!isModalOpen) {
+      createModal()
+
+      arrowContainer.classList.remove('hidden')
+      isModalOpen = true
+    } else (isModalOpen = true) => !createModal()
+  })
+
+  function createModal() {
+    const modal = document.createElement('div')
+    modal.id = 'myModal'
+    modal.className = 'modal'
+
+    const modalContent = document.createElement('div')
+    modalContent.className = 'modal-content'
+
+    const closeModalSpan = document.createElement('span')
+    closeModalSpan.className = 'close'
+    closeModalSpan.innerHTML = '&times;'
+    closeModalSpan.addEventListener('click', () => {
+      modal.style.display = 'none'
+      isModalOpen = false
+    })
+
+    const modalTitle = document.createElement('h2')
+    modalTitle.innerText = 'Inicie Su Busqueda'
+
+    const form = document.createElement('form')
+    form.id = 'modalForm'
+
+    const inputName = document.createElement('input')
+    inputName.type = 'text'
+    inputName.placeholder = 'marca'
+    inputName.required = true
+
+    const inputEmail = document.createElement('input')
+    inputEmail.type = 'text'
+    inputEmail.placeholder = 'modelo'
+    inputEmail.required = true
+
+    const button1 = document.createElement('button')
+    button1.type = 'button'
+    button1.innerText = 'Buscar'
+
+    const submitButton = document.createElement('button')
+    submitButton.type = 'submit'
+    submitButton.innerText = 'Reset'
+
+    form.appendChild(inputName)
+    form.appendChild(inputEmail)
+    form.appendChild(button1)
+
+    form.appendChild(submitButton)
+
+    modalContent.appendChild(closeModalSpan)
+    modalContent.appendChild(modalTitle)
+    modalContent.appendChild(form)
+
+    modal.appendChild(modalContent)
+
+    modalContainer.appendChild(modal)
+
+    modal.style.display = 'block'
+
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none'
+        isModalOpen = false
+      }
+    })
+  }
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+  const productContainer = document.querySelector('.app')
+
+  productos.forEach((producto) => {
+    const productCard = document.createElement('div')
+    productCard.className = 'product-card'
+
+    const productImage = document.createElement('img')
+    productImage.src = producto.image
+    productImage.alt = producto.name
+
+    const productName = document.createElement('h2')
+    productName.textContent = producto.name
+
+    const productPrice = document.createElement('p')
+    productPrice.textContent = `Precio: $${producto.price}`
+
+    const productStars = document.createElement('p')
+    productStars.textContent = `Estrellas: ${producto.stars}`
+
+    const productKilos = document.createElement('p')
+    productKilos.textContent = `Kilos: ${producto.kilos}`
+
+    const productSeller = document.createElement('p')
+    productSeller.textContent = `Vendedor: ${producto.seller}`
+
+    productCard.appendChild(productImage)
+    productCard.appendChild(productName)
+    productCard.appendChild(productPrice)
+    productCard.appendChild(productStars)
+    productCard.appendChild(productKilos)
+    productCard.appendChild(productSeller)
+
+    productContainer.appendChild(productCard)
+  })
+})

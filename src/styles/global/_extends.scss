@@ -5,9 +5,10 @@
   margin-top: 15px;
   padding: 10px 40px;
   border: 2px solid $primary-color;
-  color: $secundary-color;
+  color: $tercer-color;
   text-decoration: none;
   background: $primary-color;
   border-radius: 10px;
   font-size: large;
+  flex-grow: unset;
 }

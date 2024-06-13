@@ -1,0 +1,101 @@
+@import './global/variables';
+@import './global/extends';
+@import './componentes/button';
+@import './componentes/parpadeo';
+@import './componentes/productos';
+@import './componentes/mediaquery';
+@import './componentes/modal';
+@import './componentes/imputyform';
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: $quinto-color;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: $primary-color;
+}
+
+.nombre {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.cabecera button {
+  padding: 10px;
+  margin-left: 10px;
+  border: none;
+  background-color: $sexto-color;
+  color: $secundary-color;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.cabecera button:hover {
+  background-color: $septimo-color;
+  transform: translateY(-3px);
+}
+
+.imagenheader {
+  background-image: url('https://10mejores.es/wp-content/uploads/2019/02/interior.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px 0;
+  text-align: center;
+  color: $primary-color;
+}
+
+#buttonContainer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#arrowContainer {
+  font-size: 2em;
+  cursor: pointer;
+  transition: transform 0.5s;
+  background-color: $quinto-color;
+}
+
+#arrowContainer.open {
+  transform: rotate(180deg);
+}
+
+.app {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: $quinto-color;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: $primary-color;
+}
