@@ -64,6 +64,24 @@ const productos = [
       'https://media3.bsh-group.com/Product_Shots/1200x675/MCSA00390576_3TS853_def.jpg'
   },
   {
+    name: 'balay',
+    price: 560,
+    stars: 5,
+    kilos: 9,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://img.electronow.es/p/balay-3ts395bd-lavadora-carga-frontal-9-kg-1400-rpm-a-blanco-2.jpg?electro'
+  },
+  {
+    name: 'balay',
+    price: 360,
+    stars: 4,
+    kilos: 8,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://img.electronow.es/p/balay-3ts3106b-lavadora-carga-frontal-10-kg-1400-rpm-a-blanco-2.jpg?electro'
+  },
+  {
     name: 'hisense',
     price: 190,
     stars: 4,
@@ -82,6 +100,24 @@ const productos = [
       'https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202210/27/00104710390594____7__640x640.jpg'
   },
   {
+    name: 'bosch',
+    price: 750,
+    stars: 4,
+    kilos: 9,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://www.electrodomesta.es/images/articulos/original/lavadora_frontal_partner_bosch_was2442xee_2801-1.jpg'
+  },
+  {
+    name: 'bosch',
+    price: 510,
+    stars: 3,
+    kilos: 8,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://www.droitek.com/blogger/wp-content/uploads/2015/01/Lavadora-Bosch-WAQ24378EE.jpg'
+  },
+  {
     name: 'aspes',
     price: 150,
     stars: 4,
@@ -89,6 +125,24 @@ const productos = [
     seller: 'Superdomesticos Cabrera sl',
     image:
       'https://static.carrefour.es/hd_510x_/crs/cdn_static/catalog/hd/164390_00_1.jpg'
+  },
+  {
+    name: 'aspes',
+    price: 290,
+    stars: 4,
+    kilos: 7,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://mezco.es/357172-thickbox_default/lavadora-libre-instalacin-aspes-alf3129.jpg'
+  },
+  {
+    name: 'aspes',
+    price: 350,
+    stars: 4,
+    kilos: 7,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://th.bing.com/th/id/OIP.6IdRwp1DVBcCyoRbD1pklwHaHa?rs=1&pid=ImgDetMain'
   }
 ]
 document.addEventListener('DOMContentLoaded', () => {
@@ -97,15 +151,33 @@ document.addEventListener('DOMContentLoaded', () => {
   let isModalOpen = false
 
   arrowContainer.addEventListener('click', () => {
-    if (!isModalOpen) {
-      createModal()
-
-      arrowContainer.classList.remove('hidden')
-      isModalOpen = true
-    } else (isModalOpen = true) => !createModal()
+    toggleModal()
   })
 
+  function toggleModal() {
+    if (isModalOpen) {
+      closeModal()
+    } else {
+      openModal()
+    }
+  }
+
+  function openModal() {
+    if (!document.getElementById('myModal')) {
+      createModal()
+    }
+    document.getElementById('myModal').style.display = 'block'
+    isModalOpen = true
+  }
+
+  function closeModal() {
+    document.getElementById('myModal').style.display = 'none'
+    isModalOpen = false
+  }
+
   function createModal() {
+    if (document.getElementById('myModal')) return
+
     const modal = document.createElement('div')
     modal.id = 'myModal'
     modal.className = 'modal'
@@ -117,8 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModalSpan.className = 'close'
     closeModalSpan.innerHTML = '&times;'
     closeModalSpan.addEventListener('click', () => {
-      modal.style.display = 'none'
-      isModalOpen = false
+      closeModal()
     })
 
     const modalTitle = document.createElement('h2')
@@ -132,77 +203,161 @@ document.addEventListener('DOMContentLoaded', () => {
     inputName.placeholder = 'marca'
     inputName.required = true
 
-    const inputEmail = document.createElement('input')
-    inputEmail.type = 'text'
-    inputEmail.placeholder = 'modelo'
-    inputEmail.required = true
+    const inputKilos = document.createElement('input')
+    inputKilos.type = 'number'
+    inputKilos.placeholder = 'kilos'
+    inputKilos.required = true
+    inputKilos.min = 5
+    inputKilos.max = 12
 
-    const button1 = document.createElement('button')
-    button1.type = 'button'
-    button1.innerText = 'Buscar'
+    const buttonSearch = document.createElement('button')
+    buttonSearch.type = 'button'
+    buttonSearch.innerText = 'Buscar'
+    buttonSearch.addEventListener('click', () => {
+      console.log('Buscar button clicked')
+      const filteredProducts = filterProducts(inputName.value, inputKilos.value)
+      console.log('Filtered Products:', filteredProducts)
+      if (filteredProducts.length === 0) {
+        console.log('No products found, displaying suggested products')
+        displaySuggestedProducts()
+      } else {
+        displayProducts(filteredProducts)
+      }
+    })
 
-    const submitButton = document.createElement('button')
-    submitButton.type = 'submit'
-    submitButton.innerText = 'Reset'
+    const buttonReset = document.createElement('button')
+    buttonReset.type = 'button'
+    buttonReset.innerText = 'Reset'
+    buttonReset.addEventListener('click', () => {
+      inputName.value = ''
+      inputKilos.value = ''
+
+      displayProducts(productos)
+    })
 
     form.appendChild(inputName)
-    form.appendChild(inputEmail)
-    form.appendChild(button1)
-
-    form.appendChild(submitButton)
+    form.appendChild(inputKilos)
+    form.appendChild(buttonSearch)
+    form.appendChild(buttonReset)
 
     modalContent.appendChild(closeModalSpan)
     modalContent.appendChild(modalTitle)
     modalContent.appendChild(form)
 
     modal.appendChild(modalContent)
-
     modalContainer.appendChild(modal)
+  }
 
-    modal.style.display = 'block'
+  function filterProducts(name, kilos) {
+    return productos.filter(
+      (product) =>
+        (!name || product.name.toLowerCase().includes(name.toLowerCase())) &&
+        (!kilos || product.kilos == kilos)
+    )
+  }
 
-    window.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        modal.style.display = 'none'
-        isModalOpen = false
-      }
+  function displayProducts(products) {
+    const productContainer = document.querySelector('.app')
+    productContainer.innerHTML = ''
+
+    products.forEach((product) => {
+      const productCard = document.createElement('div')
+      productCard.className = 'product-card'
+
+      const productImage = document.createElement('img')
+      productImage.src = product.image
+      productImage.alt = product.name
+
+      const productName = document.createElement('h2')
+      productName.textContent = product.name
+
+      const productPrice = document.createElement('p')
+      productPrice.textContent = `Precio: $${product.price}`
+
+      const productStars = document.createElement('p')
+      productStars.textContent = `Estrellas: ${product.stars}`
+
+      const productKilos = document.createElement('p')
+      productKilos.textContent = `Kilos: ${product.kilos}`
+
+      const productSeller = document.createElement('p')
+      productSeller.textContent = `Vendedor: ${product.seller}`
+
+      productCard.appendChild(productImage)
+      productCard.appendChild(productName)
+      productCard.appendChild(productPrice)
+      productCard.appendChild(productStars)
+      productCard.appendChild(productKilos)
+      productCard.appendChild(productSeller)
+
+      productContainer.appendChild(productCard)
     })
   }
+
+  function displaySuggestedProducts() {
+    console.log('Displaying suggested products')
+    const productContainer = document.querySelector('.app')
+    productContainer.innerHTML = '<h2>Productos sugeridos</h2>'
+
+    const suggestedProducts = []
+    while (suggestedProducts.length < 3) {
+      const randomIndex = Math.floor(Math.random() * productos.length)
+      if (!suggestedProducts.includes(productos[randomIndex])) {
+        suggestedProducts.push(productos[randomIndex])
+      }
+    }
+
+    suggestedProducts.forEach((product) => {
+      const productCard = document.createElement('div')
+      productCard.className = 'product-card'
+
+      const productImage = document.createElement('img')
+      productImage.src = product.image
+      productImage.alt = product.name
+
+      const productName = document.createElement('h2')
+      productName.textContent = product.name
+
+      const productPrice = document.createElement('p')
+      productPrice.textContent = `Precio: $${product.price}`
+
+      const productStars = document.createElement('p')
+      productStars.textContent = `Estrellas: ${product.stars}`
+
+      const productKilos = document.createElement('p')
+      productKilos.textContent = `Kilos: ${product.kilos}`
+
+      const productSeller = document.createElement('p')
+      productSeller.textContent = `Vendedor: ${product.seller}`
+
+      productCard.appendChild(productImage)
+      productCard.appendChild(productName)
+      productCard.appendChild(productPrice)
+      productCard.appendChild(productStars)
+      productCard.appendChild(productKilos)
+      productCard.appendChild(productSeller)
+
+      productContainer.appendChild(productCard)
+    })
+  }
+
+  displayProducts(productos)
 })
 
-document.addEventListener('DOMContentLoaded', () => {
-  const productContainer = document.querySelector('.app')
-
-  productos.forEach((producto) => {
-    const productCard = document.createElement('div')
-    productCard.className = 'product-card'
-
-    const productImage = document.createElement('img')
-    productImage.src = producto.image
-    productImage.alt = producto.name
-
-    const productName = document.createElement('h2')
-    productName.textContent = producto.name
-
-    const productPrice = document.createElement('p')
-    productPrice.textContent = `Precio: $${producto.price}`
-
-    const productStars = document.createElement('p')
-    productStars.textContent = `Estrellas: ${producto.stars}`
-
-    const productKilos = document.createElement('p')
-    productKilos.textContent = `Kilos: ${producto.kilos}`
-
-    const productSeller = document.createElement('p')
-    productSeller.textContent = `Vendedor: ${producto.seller}`
-
-    productCard.appendChild(productImage)
-    productCard.appendChild(productName)
-    productCard.appendChild(productPrice)
-    productCard.appendChild(productStars)
-    productCard.appendChild(productKilos)
-    productCard.appendChild(productSeller)
-
-    productContainer.appendChild(productCard)
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
   })
-})
+}
+function scrollToBottom() {
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: 'smooth'
+  })
+}
+
+const inicioButton = document.querySelector('footer button')
+inicioButton.addEventListener('click', scrollToTop)
+const footerButton = document.querySelector('header button:nth-child(2)')
+footerButton.addEventListener('click', scrollToBottom)
