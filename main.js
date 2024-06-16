@@ -1,5 +1,11 @@
 import './src/styles/main.scss'
 
+import { initializeThemeToggle } from './modooscuro'
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  initializeThemeToggle()
+})
+
 const productos = [
   {
     name: 'bolero',
@@ -339,6 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buttonSearch.innerText = 'Buscar'
     buttonSearch.addEventListener('click', () => {
       console.log('Buscar button clicked')
+      closeModal()
       const filteredProducts = filterProducts(inputName.value, inputKilos.value)
       console.log('Filtered Products:', filteredProducts)
       if (filteredProducts.length === 0) {
@@ -355,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buttonReset.addEventListener('click', () => {
       inputName.value = ''
       inputKilos.value = ''
-
+      closeModal()
       displayProducts(productos)
     })
 
@@ -485,3 +492,17 @@ const inicioButton = document.querySelector('footer button')
 inicioButton.addEventListener('click', scrollToTop)
 const footerButton = document.querySelector('header button:nth-child(2)')
 footerButton.addEventListener('click', scrollToBottom)
+
+/*
+document.addEventListener('DOMContentLoaded', (event) => {
+  const toggleButton = document.getElementById('theme-toggle')
+
+  toggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode')
+    if (document.body.classList.contains('dark-mode')) {
+      toggleButton.textContent = 'Modo Claro'
+    } else {
+      toggleButton.textContent = 'Modo Oscuro'
+    }
+  })
+})*/
