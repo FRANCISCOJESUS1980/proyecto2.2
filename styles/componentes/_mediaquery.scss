@@ -1,0 +1,10 @@
+@media (max-width: 768px) {
+  .cabecera {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cabecera button {
+    margin: 5px 0;
+  }
+}
