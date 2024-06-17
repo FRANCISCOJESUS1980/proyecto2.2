@@ -1,4 +1,4 @@
-import './src/styles/main.scss'
+import './styles/main.scss'
 
 import { initializeThemeToggle } from './modooscuro'
 
