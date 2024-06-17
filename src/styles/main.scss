@@ -113,4 +113,11 @@ body.dark-mode {
   .app {
     background-color: $octavo-color;
   }
+  #arrowContainer {
+    background-color: $tercer-color;
+  }
+}
+
+body.transformed {
+  font-size: 25px;
 }

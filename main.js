@@ -493,16 +493,17 @@ inicioButton.addEventListener('click', scrollToTop)
 const footerButton = document.querySelector('header button:nth-child(2)')
 footerButton.addEventListener('click', scrollToBottom)
 
-/*
-document.addEventListener('DOMContentLoaded', (event) => {
-  const toggleButton = document.getElementById('theme-toggle')
+const transformButton = document.querySelector('#senior')
+let isTransformed = false
 
-  toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode')
-    if (document.body.classList.contains('dark-mode')) {
-      toggleButton.textContent = 'Modo Claro'
-    } else {
-      toggleButton.textContent = 'Modo Oscuro'
-    }
+transformButton.addEventListener('click', () => {
+  isTransformed = !isTransformed
+  transformButton.textContent = isTransformed ? 'Achicar' : 'Agrandar'
+
+  document.body.classList.toggle('transformed', isTransformed)
+
+  const productCards = document.querySelectorAll('.product-card')
+  productCards.forEach((card) => {
+    card.classList.toggle('transformed', isTransformed)
   })
-})*/
+})
