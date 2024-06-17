@@ -1,5 +1,11 @@
 import './src/styles/main.scss'
 
+import { initializeThemeToggle } from './modooscuro'
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  initializeThemeToggle()
+})
+
 const productos = [
   {
     name: 'bolero',
@@ -19,13 +25,13 @@ const productos = [
     image: 'https://infiniton.es/3984-large_default/wm-a62b.jpg'
   },
   {
-    name: 'chiq',
+    name: 'AEG',
     price: 250,
     stars: 4,
     kilos: 8,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://storage.googleapis.com/catalog-pictures-carrefour-es/catalog/pictures/hd_510x_/8592344703683_1.jpg'
+      'https://4.bp.blogspot.com/-iJl3oqdoXDA/V-zL5S9Wr0I/AAAAAAAAIAE/_AHQPsa6uGAbt6dCjgnLzKPZhNWNJgghQCLcB/s1600/aeg-l7fee841-opinion.png'
   },
   {
     name: 'siemens',
@@ -43,7 +49,7 @@ const productos = [
     kilos: 12,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://i5.walmartimages.com.mx/mg/gm/1p/images/product-images/img_large/00880609001454l.jpg?odnHeight=612&odnWidth=612&odnBg=FFFFFF'
+      'https://anjanaenterprises.com/wp-content/uploads/2021/07/Washing-Machine.png'
   },
   {
     name: 'miele',
@@ -52,7 +58,7 @@ const productos = [
     kilos: 9,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQfqiKyA48YgbB5X5-aPgwdhCaNt5MMJ6vxFFExvvIoJS9HOikgzxpYj7qNq-yJUgWAuc&usqp=CAU'
+      'https://pngimg.com/uploads/washing_machine/washing_machine_PNG15588.png'
   },
   {
     name: 'balay',
@@ -61,7 +67,7 @@ const productos = [
     kilos: 7,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://media3.bsh-group.com/Product_Shots/1200x675/MCSA00390576_3TS853_def.jpg'
+      'https://th.bing.com/th/id/R.55208f4b442be23c5d7811b622db7f3d?rik=usp77qz7clCzCw&riu=http%3a%2f%2fpngimg.com%2fuploads%2fwashing_machine%2fwashing_machine_PNG15570.png&ehk=dk41eTyRsBhNj24mVaOZhdsbi5%2fpjDThb4fTLwoSJfY%3d&risl=&pid=ImgRaw&r=0'
   },
   {
     name: 'balay',
@@ -70,7 +76,7 @@ const productos = [
     kilos: 9,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://img.electronow.es/p/balay-3ts395bd-lavadora-carga-frontal-9-kg-1400-rpm-a-blanco-2.jpg?electro'
+      'https://europaelectrodomesticos.com/25026-thickbox_default/lavadora-balay-3ti985b.jpg'
   },
   {
     name: 'balay',
@@ -79,16 +85,16 @@ const productos = [
     kilos: 8,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://img.electronow.es/p/balay-3ts3106b-lavadora-carga-frontal-10-kg-1400-rpm-a-blanco-2.jpg?electro'
+      'https://europaelectrodomesticos.com/37877-thickbox_default/lavadora-balay-3ts993bt.jpg'
   },
   {
-    name: 'hisense',
+    name: 'Candy',
     price: 190,
     stars: 4,
     kilos: 5,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://www.hisense.es/wp-content/uploads/2022/03/Destacada-WFQY1014EVJM.png'
+      'https://th.bing.com/th/id/R.339d308c6e100ab6bef8e5fb0b6c9f2a?rik=cNre3mCWEufweQ&riu=http%3a%2f%2fwww.candysmarttouch.com%2fimages%2fgrandovita_model.png&ehk=BWYMU%2bN1XyrtlqpGsIKbaUThesfZd%2beDvmTp%2fq2jer4%3d&risl=&pid=ImgRaw&r=0'
   },
   {
     name: 'bosch',
@@ -97,7 +103,7 @@ const productos = [
     kilos: 10,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202210/27/00104710390594____7__640x640.jpg'
+      'https://europaelectrodomesticos.com/46721-thickbox_default/lavadora-bosch-wau28phses.jpg'
   },
   {
     name: 'bosch',
@@ -106,7 +112,7 @@ const productos = [
     kilos: 9,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://www.electrodomesta.es/images/articulos/original/lavadora_frontal_partner_bosch_was2442xee_2801-1.jpg'
+      'https://europaelectrodomesticos.com/46718-thickbox_default/lavadora-bosch-wax28eh0es.jpg'
   },
   {
     name: 'bosch',
@@ -115,7 +121,7 @@ const productos = [
     kilos: 8,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://www.droitek.com/blogger/wp-content/uploads/2015/01/Lavadora-Bosch-WAQ24378EE.jpg'
+      'https://europaelectrodomesticos.com/47221-thickbox_default/lavadora-bosch-wgg244fxes.jpg'
   },
   {
     name: 'aspes',
@@ -124,45 +130,184 @@ const productos = [
     kilos: 6,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://static.carrefour.es/hd_510x_/crs/cdn_static/catalog/hd/164390_00_1.jpg'
+      'https://pngimg.com/uploads/washing_machine/washing_machine_PNG15581.png'
   },
   {
-    name: 'aspes',
+    name: 'Miele',
     price: 290,
     stars: 4,
     kilos: 7,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://mezco.es/357172-thickbox_default/lavadora-libre-instalacin-aspes-alf3129.jpg'
+      'https://media.miele.com/images/2000012/200001297/20000129787.png?d=1400&impolicy=z-boxed'
   },
   {
-    name: 'aspes',
+    name: 'whirlpool',
     price: 350,
     stars: 4,
     kilos: 7,
     seller: 'Superdomesticos Cabrera sl',
     image:
-      'https://th.bing.com/th/id/OIP.6IdRwp1DVBcCyoRbD1pklwHaHa?rs=1&pid=ImgDetMain'
+      'https://refrilavadoras.com/refrilavadoras/prorefri/sub_carpeta/2020-05-21-11-05-33.png'
+  },
+  {
+    name: 'Whirlpool',
+    price: 290,
+    stars: 4,
+    kilos: 7,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://kitchenaid-h.assetsadobe.com/is/image/content/dam/business-unit/whirlpool/en-us/marketing-content/site-assets/page-content/landing-pages/laundry/washers/washer-limbo-02.png?fit=constrain&fmt=png-alpha&wid=2875'
+  },
+  {
+    name: 'AEG',
+    price: 890,
+    stars: 3,
+    kilos: 11,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://services.electrolux-medialibrary.com/118ed4c0ee6546f4a7684c7fef8c985aNrZmYkM861d1f/view/WS_ZO/PSAAWM190PA0005F.png?width=250&quality=70&mode=crop'
+  },
+  {
+    name: 'AEG',
+    price: 790,
+    stars: 5,
+    kilos: 12,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://europaelectrodomesticos.com/49822-thickbox_default/lavadora-aeg-lfr7394v4b.jpg'
+  },
+  {
+    name: 'AEG',
+    price: 590,
+    stars: 3,
+    kilos: 9,
+    seller: 'Superdomesticos Cabrera sl',
+    image: 'https://pb.com.bo/wp-content/uploads/2023/10/Lavadora-HT9.png'
+  },
+  {
+    name: 'AEG',
+    price: 690,
+    stars: 5,
+    kilos: 10,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://services.electrolux-medialibrary.com/118ed4c0ee6546f4a7684c7fef8c985aNrZmYkM861d1f/view/WS_ZO/PSAAWM190PA0005F.png?width=250&quality=70&mode=crop'
+  },
+  {
+    name: 'Fagor',
+    price: 185,
+    stars: 3,
+    kilos: 5,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://storage.beko.co.uk/blomberg2018products/large/7149442300_LO2_20200429_145330.png'
+  },
+  {
+    name: 'Hisense',
+    price: 260,
+    stars: 1,
+    kilos: 6,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://i.pinimg.com/originals/1c/8d/b6/1c8db6aa616321cae07a5c01865d57e0.png'
+  },
+  {
+    name: 'Fagor',
+    price: 790,
+    stars: 5,
+    kilos: 11,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://opl-ltd.co.uk/wp-content/uploads/2022/06/Fagor-High-Spin-WM-LA45-1024x1024.png'
+  },
+  {
+    name: 'Infiniton',
+    price: 450,
+    stars: 4,
+    kilos: 8,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://pedidos.ideahogar.es/images/product/blanca/lavadoras/lavadora-carga-frontal/infiniton/01lavinf92321.jpg'
+  },
+  {
+    name: 'Teka',
+    price: 590,
+    stars: 3,
+    kilos: 6,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://th.bing.com/th/id/R.fe30af24fb26e701a35ea0f04d626341?rik=T0Nr0jTWvMNIyg&riu=http%3a%2f%2fpngimg.com%2fuploads%2fwashing_machine%2fwashing_machine_PNG15602.png&ehk=l%2bBh044caL1%2fCieqIgJlLnWRXTzGsasgOJP0p%2fxGyN0%3d&risl=1&pid=ImgRaw&r=0'
+  },
+  {
+    name: 'Hisense',
+    price: 290,
+    stars: 2,
+    kilos: 5,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://i.pinimg.com/originals/1c/8d/b6/1c8db6aa616321cae07a5c01865d57e0.png'
+  },
+  {
+    name: 'Beko',
+    price: 690,
+    stars: 4,
+    kilos: 9,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://stocksfuera.es/wp-content/uploads/2020/09/7145646100-LO2-20200603-091541.png'
+  },
+  {
+    name: 'Haier',
+    price: 390,
+    stars: 4,
+    kilos: 8,
+    seller: 'Superdomesticos Cabrera sl',
+    image:
+      'https://pngimg.com/uploads/washing_machine/washing_machine_PNG15588.png'
+  },
+  {
+    name: 'Bosch',
+    price: 490,
+    stars: 5,
+    kilos: 10,
+    seller: 'Superdomesticos Cabrera sl',
+    image: 'https://www.sonimagen.es/img/c/187.jpg'
   }
 ]
-
 document.addEventListener('DOMContentLoaded', () => {
   const modalContainer = document.getElementById('modalContainer')
   const arrowContainer = document.getElementById('arrowContainer')
   let isModalOpen = false
 
   arrowContainer.addEventListener('click', () => {
-    if (!isModalOpen) {
-      createModal()
-
-      arrowContainer.classList.remove('hidden')
-      isModalOpen = true
-    } else {
-      isModalOpen = true
-    }
+    toggleModal()
   })
 
+  function toggleModal() {
+    if (isModalOpen) {
+      closeModal()
+    } else {
+      openModal()
+    }
+  }
+
+  function openModal() {
+    if (!document.getElementById('myModal')) {
+      createModal()
+    }
+    document.getElementById('myModal').style.display = 'block'
+    isModalOpen = true
+  }
+
+  function closeModal() {
+    document.getElementById('myModal').style.display = 'none'
+    isModalOpen = false
+  }
+
   function createModal() {
+    if (document.getElementById('myModal')) return
+
     const modal = document.createElement('div')
     modal.id = 'myModal'
     modal.className = 'modal'
@@ -174,8 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModalSpan.className = 'close'
     closeModalSpan.innerHTML = '&times;'
     closeModalSpan.addEventListener('click', () => {
-      modal.style.display = 'none'
-      isModalOpen = false
+      closeModal()
     })
 
     const modalTitle = document.createElement('h2')
@@ -200,14 +344,25 @@ document.addEventListener('DOMContentLoaded', () => {
     buttonSearch.type = 'button'
     buttonSearch.innerText = 'Buscar'
     buttonSearch.addEventListener('click', () => {
+      console.log('Buscar button clicked')
+      closeModal()
       const filteredProducts = filterProducts(inputName.value, inputKilos.value)
-      displayProducts(filteredProducts)
+      console.log('Filtered Products:', filteredProducts)
+      if (filteredProducts.length === 0) {
+        console.log('No products found, displaying suggested products')
+        displaySuggestedProducts()
+      } else {
+        displayProducts(filteredProducts)
+      }
     })
 
     const buttonReset = document.createElement('button')
     buttonReset.type = 'button'
     buttonReset.innerText = 'Reset'
     buttonReset.addEventListener('click', () => {
+      inputName.value = ''
+      inputKilos.value = ''
+      closeModal()
       displayProducts(productos)
     })
 
@@ -221,17 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalContent.appendChild(form)
 
     modal.appendChild(modalContent)
-
     modalContainer.appendChild(modal)
-
-    modal.style.display = 'block'
-
-    window.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        modal.style.display = 'none'
-        isModalOpen = false
-      }
-    })
   }
 
   function filterProducts(name, kilos) {
@@ -280,5 +425,85 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
+  function displaySuggestedProducts() {
+    console.log('Displaying suggested products')
+    const productContainer = document.querySelector('.app')
+    productContainer.innerHTML = '<h2>Productos sugeridos</h2>'
+
+    const suggestedProducts = []
+    while (suggestedProducts.length < 3) {
+      const randomIndex = Math.floor(Math.random() * productos.length)
+      if (!suggestedProducts.includes(productos[randomIndex])) {
+        suggestedProducts.push(productos[randomIndex])
+      }
+    }
+
+    suggestedProducts.forEach((product) => {
+      const productCard = document.createElement('div')
+      productCard.className = 'product-card'
+
+      const productImage = document.createElement('img')
+      productImage.src = product.image
+      productImage.alt = product.name
+
+      const productName = document.createElement('h2')
+      productName.textContent = product.name
+
+      const productPrice = document.createElement('p')
+      productPrice.textContent = `Precio: $${product.price}`
+
+      const productStars = document.createElement('p')
+      productStars.textContent = `Estrellas: ${product.stars}`
+
+      const productKilos = document.createElement('p')
+      productKilos.textContent = `Kilos: ${product.kilos}`
+
+      const productSeller = document.createElement('p')
+      productSeller.textContent = `Vendedor: ${product.seller}`
+
+      productCard.appendChild(productImage)
+      productCard.appendChild(productName)
+      productCard.appendChild(productPrice)
+      productCard.appendChild(productStars)
+      productCard.appendChild(productKilos)
+      productCard.appendChild(productSeller)
+
+      productContainer.appendChild(productCard)
+    })
+  }
+
   displayProducts(productos)
+})
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
+function scrollToBottom() {
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: 'smooth'
+  })
+}
+
+const inicioButton = document.querySelector('footer button')
+inicioButton.addEventListener('click', scrollToTop)
+const footerButton = document.querySelector('header button:nth-child(2)')
+footerButton.addEventListener('click', scrollToBottom)
+
+const transformButton = document.querySelector('#senior')
+let isTransformed = false
+
+transformButton.addEventListener('click', () => {
+  isTransformed = !isTransformed
+  transformButton.textContent = isTransformed ? 'Achicar' : 'Agrandar'
+
+  document.body.classList.toggle('transformed', isTransformed)
+
+  const productCards = document.querySelectorAll('.product-card')
+  productCards.forEach((card) => {
+    card.classList.toggle('transformed', isTransformed)
+  })
 })
